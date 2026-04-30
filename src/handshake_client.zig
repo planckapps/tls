@@ -1180,7 +1180,7 @@ test "handshake verify server finished message" {
         // Copy the const fixture into a mutable local so the TLS
         // in-place decrypter (which does `@constCast(rec.buffer)`
         // on whatever the reader hands it) doesn't try to write
-        // to a `.rodata` page - bus-errors on Zig 0.16 aarch64.
+        // to a `.rodata` page — bus-errors on Zig 0.16 aarch64.
         var reader_buf = data12.server_handshake_finished_msgs;
         var reader: Io.Reader = .fixed(&reader_buf);
         break :brk .{ .input = &reader, .output = &writer };

@@ -342,7 +342,7 @@ test "encrypt decrypt" {
     const rng = rng_impl.interface();
     var output_buf: [1024]u8 = undefined;
     // The TLS decrypter does in-place decryption inside `rec.buffer`
-    // via `@constCast` - fine when the reader's source is mutable
+    // via `@constCast` — fine when the reader's source is mutable
     // (real sockets), but a read-only `.rodata` literal like
     // `&data12.server_pong ** 4` traps on the write. Copy into a
     // mutable local so the `@constCast` → write chain is sound.
