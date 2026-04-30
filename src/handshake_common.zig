@@ -137,7 +137,7 @@ pub const cert = struct {
 
     pub fn fromFilePath(allocator: mem.Allocator, io: Io, dir: std.Io.Dir, path: []const u8) !Bundle {
         var bundle: Bundle = .empty;
-        try bundle.addCertsFromFilePath(allocator, io, try Io.Clock.real.now(io), dir, path);
+        try bundle.addCertsFromFilePath(allocator, io, Io.Clock.real.now(io), dir, path);
         return bundle;
     }
 
@@ -156,7 +156,7 @@ pub const cert = struct {
     pub fn fromSlice(allocator: mem.Allocator, io: Io, slice: []const u8) !Bundle {
         const base64 = std.base64.standard.decoderWithIgnore(" \t\r\n");
         const size = slice.len;
-        const ts = try Io.Clock.real.now(io);
+        const ts = Io.Clock.real.now(io);
 
         var bundle: Bundle = .empty;
 
